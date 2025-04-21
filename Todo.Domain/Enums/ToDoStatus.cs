@@ -2,7 +2,7 @@ namespace Todo.Domain.Enums;
 
 public enum ToDoStatus
 {
-    Created,
-    ToDo,
-    Done,
+    Created = 1,
+    ToDo = 2,
+    Done = 3,
 }
