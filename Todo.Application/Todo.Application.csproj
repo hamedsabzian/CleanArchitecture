@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Todo.Application.Abstraction\Todo.Application.Abstraction.csproj" />
+      <ProjectReference Include="..\Todo.Domain\Todo.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
