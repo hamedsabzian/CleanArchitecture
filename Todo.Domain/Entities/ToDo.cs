@@ -28,7 +28,7 @@ public class ToDo
     public ToDoStatus Status { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
-    public byte[] RowVersion { get; private set; }
+    public byte[] RowVersion { get; private set; } = [];
 
     public void Todo(DateTime now)
     {

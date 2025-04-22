@@ -8,7 +8,7 @@ namespace Todo.Application;
 
 public static class DependencyRegistration
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static IServiceCollection AddApplication(this IServiceCollection services, bool addPipelineBehavior = true)
     {
         services.AddValidatorsFromAssemblyContaining<CreateToDoCommandValidator>();
 
@@ -17,8 +17,12 @@ public static class DependencyRegistration
 
         services.AddMediator(options => { options.ServiceLifetime = ServiceLifetime.Scoped; });
 
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionHandlingBehavior<,>));
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        if (addPipelineBehavior)
+        {
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionHandlingBehavior<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        }
+
         return services;
     }
 }
