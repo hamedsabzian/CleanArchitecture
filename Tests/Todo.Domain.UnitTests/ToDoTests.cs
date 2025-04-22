@@ -1,5 +1,4 @@
-﻿using Shouldly;
-using Todo.Domain.Entities;
+﻿using Todo.Domain.Entities;
 using Todo.Domain.Enums;
 
 namespace Todo.Domain.UnitTests;
@@ -58,7 +57,7 @@ public class ToDoTests
         var todo = new ToDo(Guid.NewGuid(), "Foo", "Bar", DateTime.UtcNow);
         var now = DateTime.UtcNow;
         todo.Todo(now);
-        
+
         now = DateTime.UtcNow;
         todo.Done(now);
 
@@ -81,10 +80,10 @@ public class ToDoTests
     public void Update_ShouldBeSuccessful()
     {
         var todo = new ToDo(Guid.NewGuid(), "Foo", "Bar", DateTime.UtcNow);
-        
+
         var now = DateTime.UtcNow;
         todo.Update("Bar", "Foo", now);
-        
+
         todo.Title.ShouldBe("Bar");
         todo.Description.ShouldBe("Foo");
         todo.UpdatedAt.ShouldBe(now);
@@ -98,9 +97,9 @@ public class ToDoTests
         void Action()
         {
             var now = DateTime.UtcNow;
-            todo.Update(null!, "Foo", now);    
+            todo.Update(null!, "Foo", now);
         }
-        
+
         Should.Throw<ArgumentException>(Action);
     }
 }
