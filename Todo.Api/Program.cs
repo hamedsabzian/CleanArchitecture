@@ -1,4 +1,7 @@
+using Scalar.AspNetCore;
 using Todo.Api.Configurations;
+using Todo.Application;
+using Todo.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,11 +20,14 @@ await app.MigrateDatabase();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
 
 app.MapGet("/", () => "TODO App")
     .WithName("Home");
+
+app.MapToDoEndpoints();
 
 app.Run();
