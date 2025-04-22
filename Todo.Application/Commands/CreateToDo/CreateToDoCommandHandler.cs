@@ -9,15 +9,15 @@ public class CreateToDoCommandHandler(
     TimeProvider timeProvider,
     IUnitOfWork unitOfWork,
     ILogger<CreateToDoCommandHandler> logger)
-    : IRequestHandler<CreateToDoCommand, Response<Guid>>
+    : IRequestHandler<CreateToDoCommand, Response<Guid?>>
 {
-    public async ValueTask<Response<Guid>> Handle(CreateToDoCommand request, CancellationToken cancellationToken)
+    public async ValueTask<Response<Guid?>> Handle(CreateToDoCommand request, CancellationToken cancellationToken)
     {
         var todo = new ToDo(idGenerator.New<ToDo>(), request.Title, request.Description, timeProvider.GetUtcNow().DateTime);
 
         unitOfWork.Repository<ToDo>().Add(todo);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return new Response<Guid>().Success(todo.Id);
+        return new Response<Guid?>().Success(todo.Id);
     }
 }
