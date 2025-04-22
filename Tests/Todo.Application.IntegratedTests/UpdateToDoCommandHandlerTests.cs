@@ -2,17 +2,18 @@
 using Microsoft.Extensions.DependencyInjection;
 using Todo.Application.Abstraction.Interfaces;
 using Todo.Application.Commands.DeleteToDo;
+using Todo.Application.Commands.UpdateToDo;
 using Todo.Domain.Entities;
 
 namespace Todo.Application.IntegratedTests;
 
-public class DeleteToDoCommandHandlerTests : IDisposable, IClassFixture<IntegratedFixture>
+public class UpdateToDoCommandHandlerTests : IDisposable, IClassFixture<IntegratedFixture>
 {
     private readonly IServiceScope _scope;
     private readonly IMediator _mediator;
     private readonly IUnitOfWork _unitOfWork;
 
-    public DeleteToDoCommandHandlerTests(IntegratedFixture fixture)
+    public UpdateToDoCommandHandlerTests(IntegratedFixture fixture)
     {
         _scope = fixture.Configure().CreateAsyncScope();
         _mediator = _scope.ServiceProvider.GetRequiredService<IMediator>();
@@ -26,13 +27,15 @@ public class DeleteToDoCommandHandlerTests : IDisposable, IClassFixture<Integrat
         var todo = new ToDo(Guid.NewGuid(), "Foo", "Bar", DateTime.UtcNow);
         repository.Add(todo);
         await _unitOfWork.SaveChangesAsync();
-        var command = new DeleteToDoCommand(todo.Id);
+        var command = new UpdateToDoCommand(todo.Id, "Updated Foo", "Updated Bar");
 
         var result = await _mediator.Send(command);
 
         result.StatusCode.ShouldBe(200);
         var existingTodo = await repository.GetAsync(todo.Id);
-        existingTodo.ShouldBeNull();
+        existingTodo.ShouldNotBeNull();
+        existingTodo.Title.ShouldBe("Updated Foo");
+        existingTodo.Description.ShouldBe("Updated Bar");
     }
 
     [Fact]

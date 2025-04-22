@@ -44,7 +44,7 @@ public class ToDo
         UpdatedAt = now;
     }
 
-    public void Update(string title, string description, DateTime now)
+    public void Update(string title, string? description, DateTime now)
     {
         Guard.Against.NullOrEmpty(title);
 

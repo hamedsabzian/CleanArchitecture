@@ -1,1 +1,2 @@
-﻿global using Shouldly;
+﻿global using Todo.Application.IntegratedTests.Fixtures;
+global using Shouldly;
