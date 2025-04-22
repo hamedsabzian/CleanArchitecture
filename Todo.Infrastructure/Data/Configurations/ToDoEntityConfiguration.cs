@@ -24,6 +24,7 @@ public class ToDoEntityConfiguration : IEntityTypeConfiguration<ToDo>
             .HasConversion<int>();
 
         builder.Property(a => a.Description)
+            .HasMaxLength(1000)
             .IsRequired(false);
 
         builder.Property(a => a.CreatedAt)
