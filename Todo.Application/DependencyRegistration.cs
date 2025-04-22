@@ -16,6 +16,8 @@ public static class DependencyRegistration
         services.AddSingleton<TimeProvider>(TimeProvider.System);
 
         services.AddMediator(options => { options.ServiceLifetime = ServiceLifetime.Scoped; });
+
+        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionHandlingBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         return services;
     }
