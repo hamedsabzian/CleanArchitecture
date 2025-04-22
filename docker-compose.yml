@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  todo.api:
+    image: todo.api
+    build:
+      context: .
+      dockerfile: Todo.Api/Dockerfile
+    ports:
+      - "6480:8080"
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: no
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Sf!j*5MsU_z4!3DnQlInsr5X8"
+    ports:
+      - "6433:1433"
+    volumes:
+      - todo-db-volume:/var/opt/mssql
+
+volumes:
+  todo-db-volume:

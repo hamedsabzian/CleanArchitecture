@@ -1,0 +1,41 @@
+# .editorconfig for .NET projects
+
+# Root of the file
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+tab_width = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# C# files
+[*.cs]
+# Use standard C# formatting
+dotnet_sort_system_directives_first = true
+csharp_new_line_before_open_brace = all
+max_line_length = 140
+
+# JSON files
+[*.json]
+indent_size = 2
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+
+# HTML files
+[*.html]
+indent_size = 2
+
+# XML files
+[*.xml]
+indent_size = 2
+
+# YML files
+[*.yml]
+indent_size = 2

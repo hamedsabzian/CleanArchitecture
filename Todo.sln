@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Infrastructure", "Todo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Api", "Todo.Api\Todo.Api.csproj", "{F9126E49-7106-42C3-99B9-7501064CA634}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F61BBD34-9E38-438D-BB8E-8FE4B176D1E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F61BBD34-9E38-438D-BB8E-8FE4B176D1E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Domain.UnitTests", "Tests\Todo.Domain.UnitTests\Todo.Domain.UnitTests.csproj", "{F6E54E7B-3DF9-4A72-BF33-DC5D581A4656}"
 EndProject
@@ -17,6 +17,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application.IntegratedTests", "Tests\Todo.Application.IntegratedTests\Todo.Application.IntegratedTests.csproj", "{FB2D9932-E7A4-4DED-B7E0-12BA4DFBB01C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application.Abstraction", "Todo.Application.Abstraction\Todo.Application.Abstraction.csproj", "{F7A2AC73-DC7A-4A04-A730-A369AA989F16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "etc", "etc", "{718EAC95-D89E-45F0-9ECC-5FD200EE7D01}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
