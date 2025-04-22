@@ -1,6 +1,7 @@
 ﻿using Mediator;
 using Microsoft.AspNetCore.Mvc;
 using Todo.Application.Commands.CreateToDo;
+using Todo.Application.Commands.DeleteToDo;
 
 namespace Todo.Api.Configurations;
 
@@ -12,5 +13,10 @@ public static class EndpointExtensions
                 ([FromBody] CreateToDoCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken) =>
                     mediator.Send(command, cancellationToken))
             .WithName("create-todo");
+
+        app.MapDelete("/todo/{id}",
+                ([FromRoute] Guid id, [FromServices] IMediator mediator, CancellationToken cancellationToken) =>
+                    mediator.Send(new DeleteToDoCommand(id), cancellationToken))
+            .WithName("delete-todo");
     }
 }
