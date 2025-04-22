@@ -10,6 +10,6 @@ public class CreateToDoCommandValidator : AbstractValidator<CreateToDoCommand>
             .NotEmpty()
             .MaximumLength(100);
 
-        RuleFor(a=>a.Description).MaximumLength(1000);
+        RuleFor(a => a.Description).MaximumLength(1000);
     }
 }
