@@ -6,8 +6,10 @@ public class Response<T> : ResponseBase<Response<T>>
 {
     public T? Data { get; protected set; }
 
-    public static Response<T> Success(T data)
+    public Response<T> Success(T data)
     {
-        return new Response<T> { Data = data }.Success();
+        Success();
+        Data = data;
+        return this;
     }
 }
