@@ -7,7 +7,7 @@ public class GetToDoListQueryHandler(IToDoReader reader) : IRequestHandler<GetTo
 {
     public async ValueTask<Response<PaginatedList<GetToDoListDto>>> Handle(GetToDoListQuery request, CancellationToken cancellationToken)
     {
-        var result = await reader.GetList(request.PageNumber, request.PageSize, cancellationToken);
+        var result = await reader.GetListAsync(request.PageNumber, request.PageSize, cancellationToken);
         return new Response<PaginatedList<GetToDoListDto>>().Success(result);
     }
 }

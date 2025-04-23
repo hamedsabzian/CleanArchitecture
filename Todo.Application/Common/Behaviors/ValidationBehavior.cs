@@ -26,6 +26,8 @@ public class ValidationBehavior<TRequest, TResponse>(
 
             if (failures.Count > 0)
             {
+                logger.LogWarning("Request is invalid: {@Request}", message);
+
                 ResponseBase<TResponse> result = new TResponse()
                     .Invalid()
                     .WithErrors(failures.Select(a => new ResponseError(a.PropertyName, a.ErrorMessage)));

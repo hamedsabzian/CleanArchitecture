@@ -1,14 +1,18 @@
+using Microsoft.Extensions.Caching.Memory;
 using Todo.Application.Abstraction.Dtos;
 using Todo.Application.Abstraction.Interfaces;
+using Todo.Application.Common;
 
 namespace Todo.Application.Queries.GetToDo;
 
-public class GetToDoQueryHandler(IToDoReader reader, ILogger<GetToDoQueryHandler> logger)
+public class GetToDoQueryHandler(IToDoReader reader, IMemoryCache cache, ILogger<GetToDoQueryHandler> logger)
     : IRequestHandler<GetToDoQuery, Response<GetToDoDto>>
 {
     public async ValueTask<Response<GetToDoDto>> Handle(GetToDoQuery request, CancellationToken cancellationToken)
     {
-        var todo = await reader.GetAsync(request.Id, cancellationToken);
+        var cacheKey = $"todo_{request.Id}";
+
+        var todo = await cache.GetWithFallbackAsync(cacheKey, clnToken => reader.GetAsync(request.Id, clnToken), cancellationToken);
         if (todo is null)
         {
             logger.LogWarning("The todo with id {Id} was not found", request.Id);

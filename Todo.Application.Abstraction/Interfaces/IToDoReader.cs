@@ -6,5 +6,5 @@ public interface IToDoReader
 {
     Task<GetToDoDto?> GetAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<PaginatedList<GetToDoListDto>> GetList(int pageNumber, int pageSize, CancellationToken cancellationToken);
+    Task<PaginatedList<GetToDoListDto>> GetListAsync(int pageNumber, int pageSize, CancellationToken cancellationToken);
 }

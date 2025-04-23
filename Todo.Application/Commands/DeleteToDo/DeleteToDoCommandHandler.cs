@@ -5,6 +5,7 @@ namespace Todo.Application.Commands.DeleteToDo;
 
 public class DeleteToDoCommandHandler(
     IUnitOfWork unitOfWork,
+    TimeProvider timeProvider,
     ILogger<DeleteToDoCommandHandler> logger) : IRequestHandler<DeleteToDoCommand, Response>
 {
     public async ValueTask<Response> Handle(DeleteToDoCommand request, CancellationToken cancellationToken)
@@ -17,6 +18,7 @@ public class DeleteToDoCommandHandler(
             return new Response().NotFound();
         }
 
+        todo.Delete(timeProvider.GetUtcNow().DateTime);
         repository.Delete(todo);
         await unitOfWork.SaveChangesAsync(cancellationToken);
         logger.LogInformation("The todo with id {Id} was successfully deleted", request.Id);

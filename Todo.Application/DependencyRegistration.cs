@@ -1,8 +1,10 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Todo.Application.Abstraction.Interfaces;
 using Todo.Application.Commands.CreateToDo;
 using Todo.Application.Common;
 using Todo.Application.Common.Behaviors;
+using Todo.Application.Events.Common;
 
 namespace Todo.Application;
 
@@ -12,6 +14,7 @@ public static class DependencyRegistration
     {
         services.AddValidatorsFromAssemblyContaining<CreateToDoCommandValidator>();
 
+        services.AddScoped<IDomainEventDispatcher, MediatorDomainEventDispatcher>();
         services.AddSingleton<IIdGenerator, IdGenerator>();
         services.AddSingleton<TimeProvider>(TimeProvider.System);
 

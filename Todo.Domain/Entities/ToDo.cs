@@ -1,10 +1,12 @@
 ﻿using Ardalis.GuardClauses;
+using Todo.Domain.Entities.Common;
 using Todo.Domain.Enums;
+using Todo.Domain.Events;
 using Todo.Domain.Extensions;
 
 namespace Todo.Domain.Entities;
 
-public class ToDo
+public class ToDo : EntityBase<Guid>, IAggregateRoot
 {
     private ToDo()
     {
@@ -22,7 +24,6 @@ public class ToDo
         Status = ToDoStatus.Created;
     }
 
-    public Guid Id { get; private set; }
     public string Title { get; private set; }
     public string? Description { get; private set; }
     public ToDoStatus Status { get; private set; }
@@ -33,6 +34,8 @@ public class ToDo
     {
         Status = ToDoStatus.Activated;
         UpdatedAt = now;
+
+        RegisterDomainEvent(new ToDoActivatedEvent(Id, now));
     }
 
     public bool CanBeDone()
@@ -46,6 +49,8 @@ public class ToDo
 
         Status = ToDoStatus.Done;
         UpdatedAt = now;
+
+        RegisterDomainEvent(new ToDoDoneEvent(Id, now));
     }
 
     public void Update(string title, string? description, DateTime now)
@@ -55,5 +60,12 @@ public class ToDo
         Title = title;
         Description = description;
         UpdatedAt = now;
+
+        RegisterDomainEvent(new ToDoUpdatedEvent(Id, now));
+    }
+
+    public void Delete(DateTime now)
+    {
+        RegisterDomainEvent(new ToDoDeletedEvent(Id, now));
     }
 }

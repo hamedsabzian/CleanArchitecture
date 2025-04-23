@@ -5,6 +5,8 @@ using Todo.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMemoryCache();
+
 builder.Services.AddApplication()
     .AddInfrastructure(builder.Configuration);
 

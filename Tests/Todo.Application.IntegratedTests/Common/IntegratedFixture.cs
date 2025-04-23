@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Todo.Infrastructure;
 using Todo.Infrastructure.Data;
 
-namespace Todo.Application.IntegratedTests.Fixtures;
+namespace Todo.Application.IntegratedTests.Common;
 
 public sealed class IntegratedFixture
 {
@@ -16,6 +16,7 @@ public sealed class IntegratedFixture
     {
         var services = new ServiceCollection();
         services.AddLogging();
+        services.AddMemoryCache();
 
         services.AddApplication(false)
             .AddDataDependencies();

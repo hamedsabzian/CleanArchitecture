@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Todo.Infrastructure.Data;
 
-namespace Todo.Application.IntegratedTests.Fixtures;
+namespace Todo.Application.IntegratedTests.Common;
 
 public class ToDoTestDbContext : ToDoDbContext
 {
