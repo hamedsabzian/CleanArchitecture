@@ -1,6 +1,7 @@
 using Scalar.AspNetCore;
 using Todo.Api.Configurations;
 using Todo.Application;
+using Todo.Application.Common.ResponseModels;
 using Todo.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,16 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.MapScalarApiReference();
+}
+else
+{
+    app.UseExceptionHandler(exceptionHandlerApp =>
+    {
+        exceptionHandlerApp.Run(async context =>
+        {
+            await Results.Json(new Response().Error().WithMessage("An exception has occurred")).ExecuteAsync(context);
+        });
+    });
 }
 
 app.UseHttpsRedirection();
