@@ -32,9 +32,5 @@ public class ToDoEntityConfiguration : IEntityTypeConfiguration<ToDo>
 
         builder.Property(a => a.UpdatedAt)
             .IsRequired(false);
-
-        builder.Property(a => a.RowVersion)
-            .IsConcurrencyToken()
-            .ValueGeneratedOnAddOrUpdate();
     }
 }
