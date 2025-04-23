@@ -5,7 +5,7 @@ using Todo.Application.Commands.CreateToDo;
 using Todo.Domain.Entities;
 using Todo.Domain.Enums;
 
-namespace Todo.Application.IntegratedTests;
+namespace Todo.Application.IntegratedTests.Commands;
 
 public class CreateToDoCommandHandlerTests : IDisposable, IClassFixture<IntegratedFixture>
 {
@@ -27,7 +27,7 @@ public class CreateToDoCommandHandlerTests : IDisposable, IClassFixture<Integrat
 
         var result = await _mediator.Send(command);
 
-        result.StatusCode.ShouldBe(200);
+        result.StatusCode.ShouldBe(DefaultResponseStatusCodes.Ok);
         var todo = await _unitOfWork.Repository<ToDo>().GetAsync(result.Data!.Value);
         todo!.Title.ShouldBe(command.Title);
         todo.Description.ShouldBe(command.Description);

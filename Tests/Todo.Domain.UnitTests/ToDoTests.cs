@@ -1,4 +1,5 @@
-﻿using Todo.Domain.Entities;
+﻿using Shouldly;
+using Todo.Domain.Entities;
 using Todo.Domain.Enums;
 
 namespace Todo.Domain.UnitTests;
