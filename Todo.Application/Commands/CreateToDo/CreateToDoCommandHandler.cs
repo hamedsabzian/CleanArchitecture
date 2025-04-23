@@ -7,8 +7,7 @@ namespace Todo.Application.Commands.CreateToDo;
 public class CreateToDoCommandHandler(
     IIdGenerator idGenerator,
     TimeProvider timeProvider,
-    IUnitOfWork unitOfWork,
-    ILogger<CreateToDoCommandHandler> logger)
+    IUnitOfWork unitOfWork)
     : IRequestHandler<CreateToDoCommand, Response<Guid?>>
 {
     public async ValueTask<Response<Guid?>> Handle(CreateToDoCommand request, CancellationToken cancellationToken)

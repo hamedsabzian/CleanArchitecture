@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Todo.Application.Abstraction.Interfaces;
+using Todo.Infrastructure;
 using Todo.Infrastructure.Data;
 
 namespace Todo.Application.IntegratedTests.Fixtures;
 
-public class IntegratedFixture
+public sealed class IntegratedFixture
 {
     public IServiceProvider Configure()
     {
@@ -17,11 +17,11 @@ public class IntegratedFixture
         var services = new ServiceCollection();
         services.AddLogging();
 
-        services.AddApplication(false);
+        services.AddApplication(false)
+            .AddDataDependencies();
 
         services.AddDbContext<ToDoTestDbContext>(builder => { builder.UseInMemoryDatabase(Guid.NewGuid().ToString()); });
         services.AddScoped<ToDoDbContext>(provider =>  provider.GetRequiredService<ToDoTestDbContext>());
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         configureServices(services);
 
