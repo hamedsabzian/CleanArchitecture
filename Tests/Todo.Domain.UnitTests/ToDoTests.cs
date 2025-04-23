@@ -41,14 +41,14 @@ public class ToDoTests
     }
 
     [Fact]
-    public void Todo_ShouldBeSuccessful()
+    public void Activate_ShouldBeSuccessful()
     {
         var todo = new ToDo(Guid.NewGuid(), "Foo", "Bar", DateTime.UtcNow);
 
         var now = DateTime.UtcNow;
-        todo.Todo(now);
+        todo.Activate(now);
 
-        todo.Status.ShouldBe(ToDoStatus.ToDo);
+        todo.Status.ShouldBe(ToDoStatus.Activated);
         todo.UpdatedAt.ShouldBe(now);
     }
 
@@ -57,13 +57,34 @@ public class ToDoTests
     {
         var todo = new ToDo(Guid.NewGuid(), "Foo", "Bar", DateTime.UtcNow);
         var now = DateTime.UtcNow;
-        todo.Todo(now);
+        todo.Activate(now);
 
         now = DateTime.UtcNow;
         todo.Done(now);
 
         todo.Status.ShouldBe(ToDoStatus.Done);
         todo.UpdatedAt.ShouldBe(now);
+    }
+
+    [Fact]
+    public void CanBeDone_WithActivatedStatus_ShouldBeSuccessful()
+    {
+        var todo = new ToDo(Guid.NewGuid(), "Foo", "Bar", DateTime.UtcNow);
+        todo.Activate(DateTime.UtcNow);
+
+        var canBeDone = todo.CanBeDone();
+
+        canBeDone.ShouldBeTrue();
+    }
+
+    [Fact]
+    public void CanBeDone_WithCreatedStatus_ShouldBeFailed()
+    {
+        var todo = new ToDo(Guid.NewGuid(), "Foo", "Bar", DateTime.UtcNow);
+
+        var canBeDone = todo.CanBeDone();
+
+        canBeDone.ShouldBeFalse();
     }
 
     [Fact]

@@ -1,10 +1,8 @@
 using Mediator;
 using Microsoft.Extensions.DependencyInjection;
 using Todo.Application.Abstraction.Interfaces;
-using Todo.Application.Queries.GetToDo;
 using Todo.Application.Queries.GetToDoList;
 using Todo.Domain.Entities;
-using Todo.Domain.Enums;
 
 namespace Todo.Application.IntegratedTests.Queries;
 

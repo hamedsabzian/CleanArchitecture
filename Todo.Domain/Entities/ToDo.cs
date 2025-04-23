@@ -29,15 +29,20 @@ public class ToDo
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
-    public void Todo(DateTime now)
+    public void Activate(DateTime now)
     {
-        Status = ToDoStatus.ToDo;
+        Status = ToDoStatus.Activated;
         UpdatedAt = now;
+    }
+
+    public bool CanBeDone()
+    {
+        return Status == ToDoStatus.Activated;
     }
 
     public void Done(DateTime now)
     {
-        Guard.Against.NotEqualTo(Status, ToDoStatus.ToDo, nameof(Status));
+        Guard.Against.NotEqualTo(Status, ToDoStatus.Activated, nameof(Status));
 
         Status = ToDoStatus.Done;
         UpdatedAt = now;

@@ -1,5 +1,6 @@
 ﻿using Mediator;
 using Microsoft.AspNetCore.Mvc;
+using Todo.Application.Commands.ActivateToDo;
 using Todo.Application.Commands.CreateToDo;
 using Todo.Application.Commands.DeleteToDo;
 using Todo.Application.Commands.UpdateToDo;
@@ -30,14 +31,19 @@ public static class EndpointExtensions
                     mediator.Send(command, cancellationToken))
             .WithName("create-todo");
 
-        app.MapDelete("/todo/{id}",
-                ([FromRoute] Guid id, [FromServices] IMediator mediator, CancellationToken cancellationToken) =>
-                    mediator.Send(new DeleteToDoCommand(id), cancellationToken))
-            .WithName("delete-todo");
-
         app.MapPut("/todo",
                 ([FromBody] UpdateToDoCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken) =>
                     mediator.Send(command, cancellationToken))
             .WithName("update-todo");
+
+        app.MapPut("/todo/activate",
+                ([FromBody] ActivateToDoCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken) =>
+                    mediator.Send(command, cancellationToken))
+            .WithName("activate-todo");
+
+        app.MapDelete("/todo/{id}",
+                ([FromRoute] Guid id, [FromServices] IMediator mediator, CancellationToken cancellationToken) =>
+                    mediator.Send(new DeleteToDoCommand(id), cancellationToken))
+            .WithName("delete-todo");
     }
 }
