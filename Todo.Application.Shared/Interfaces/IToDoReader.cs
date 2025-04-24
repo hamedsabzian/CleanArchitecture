@@ -1,6 +1,6 @@
-﻿using Todo.Application.Abstraction.Dtos;
+﻿using Todo.Application.Shared.Dtos;
 
-namespace Todo.Application.Abstraction.Interfaces;
+namespace Todo.Application.Shared.Interfaces;
 
 public interface IToDoReader
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Todo.Application.Abstraction.Interfaces;
+using Todo.Application.Shared.Interfaces;
 using Todo.Domain.Entities;
 using Todo.Domain.Entities.Common;
 

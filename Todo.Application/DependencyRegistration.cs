@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using Todo.Application.Abstraction.Interfaces;
+using Todo.Application.Shared.Interfaces;
 using Todo.Application.Commands.CreateToDo;
 using Todo.Application.Common;
 using Todo.Application.Common.Behaviors;

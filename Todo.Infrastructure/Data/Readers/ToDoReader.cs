@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Todo.Application.Abstraction.Dtos;
-using Todo.Application.Abstraction.Interfaces;
+using Todo.Application.Shared.Dtos;
+using Todo.Application.Shared.Interfaces;
 
 namespace Todo.Infrastructure.Data.Readers;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Todo.Application.Abstraction.Dtos;
+using Todo.Application.Shared.Dtos;
 
 namespace Todo.Infrastructure.Data.Extensions;
 

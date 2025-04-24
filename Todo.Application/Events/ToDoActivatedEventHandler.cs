@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using Todo.Application.Abstraction.Interfaces;
+using Todo.Application.Shared.Interfaces;
 using Todo.Domain.Events;
 
 namespace Todo.Application.Events;

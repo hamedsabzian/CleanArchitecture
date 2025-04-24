@@ -1,6 +1,6 @@
 using Todo.Domain.Entities.Common;
 
-namespace Todo.Application.Abstraction.Interfaces;
+namespace Todo.Application.Shared.Interfaces;
 
 public interface IDomainEventDispatcher
 {

@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application.UnitTests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application.IntegratedTests", "Tests\Todo.Application.IntegratedTests\Todo.Application.IntegratedTests.csproj", "{FB2D9932-E7A4-4DED-B7E0-12BA4DFBB01C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application.Abstraction", "Todo.Application.Abstraction\Todo.Application.Abstraction.csproj", "{F7A2AC73-DC7A-4A04-A730-A369AA989F16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application.Shared", "Todo.Application.Shared\Todo.Application.Shared.csproj", "{F7A2AC73-DC7A-4A04-A730-A369AA989F16}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "etc", "etc", "{718EAC95-D89E-45F0-9ECC-5FD200EE7D01}"
 	ProjectSection(SolutionItems) = preProject

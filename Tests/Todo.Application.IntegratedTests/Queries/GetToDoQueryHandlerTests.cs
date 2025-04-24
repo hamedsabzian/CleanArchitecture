@@ -1,7 +1,7 @@
 using Mediator;
 using Microsoft.Extensions.DependencyInjection;
-using Todo.Application.Abstraction.Interfaces;
 using Todo.Application.Queries.GetToDo;
+using Todo.Application.Shared.Interfaces;
 using Todo.Domain.Entities;
 using Todo.Domain.Enums;
 

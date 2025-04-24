@@ -1,4 +1,4 @@
-namespace Todo.Application.Abstraction.Dtos;
+namespace Todo.Application.Shared.Dtos;
 
 public class PaginatedList<T>
 {

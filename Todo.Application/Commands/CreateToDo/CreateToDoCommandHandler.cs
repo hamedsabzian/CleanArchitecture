@@ -1,4 +1,4 @@
-using Todo.Application.Abstraction.Interfaces;
+using Todo.Application.Shared.Interfaces;
 using Todo.Application.Common;
 using Todo.Domain.Entities;
 

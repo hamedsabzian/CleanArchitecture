@@ -1,4 +1,4 @@
-﻿namespace Todo.Application.Abstraction.Interfaces;
+﻿namespace Todo.Application.Shared.Interfaces;
 
 public interface IRepository<T>
 {
