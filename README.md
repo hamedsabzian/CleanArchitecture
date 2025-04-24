@@ -20,15 +20,15 @@ The project could be run without docker only if you have MSSQL on your system an
 
 # Endpoints
 
-| Endpoint                | Description                          |
-|-------------------------|--------------------------------------|
-| GET /todo               | Get list of ToDos with pagination    |
-| GET /todo/{id}          | Get details of a ToDo by Id          |
-| POST /todo              | Create a new ToDo                    |
-| PUT /todo               | Update a ToDo information            |
-| PUT /todo/activate/{id} | Change status of a ToDo to activated |
-| PUT /todo/done/{id}     | Change status of a ToDo to done      |
-| DELETE /todo/{id}       | Delete a ToDo                        |
+| Endpoint           | Description                          |
+|--------------------|--------------------------------------|
+| GET /todo          | Get list of ToDos with pagination    |
+| GET /todo/{id}     | Get details of a ToDo by Id          |
+| POST /todo         | Create a new ToDo                    |
+| PUT /todo          | Update a ToDo information            |
+| PUT /todo/activate | Change status of a ToDo to activated |
+| PUT /todo/done     | Change status of a ToDo to done      |
+| DELETE /todo/{id}  | Delete a ToDo                        |
 
 # Validation
 
