@@ -1,4 +1,6 @@
-﻿namespace Todo.Application.Shared.Interfaces;
+﻿using Todo.Domain.Interfaces;
+
+namespace Todo.Application.Shared.Interfaces;
 
 public interface IUnitOfWork
 {

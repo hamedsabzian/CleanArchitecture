@@ -1,4 +1,5 @@
 ﻿using Todo.Application.Shared.Interfaces;
+using Todo.Domain.Interfaces;
 
 namespace Todo.Infrastructure.Data.Repositories;
 
