@@ -21,8 +21,7 @@ public sealed class IntegratedFixture
         services.AddApplication(false)
             .AddDataDependencies();
 
-        services.AddDbContext<ToDoTestDbContext>(builder => { builder.UseInMemoryDatabase(Guid.NewGuid().ToString()); });
-        services.AddScoped<ToDoDbContext>(provider =>  provider.GetRequiredService<ToDoTestDbContext>());
+        services.AddDbContext<ToDoDbContext>(builder => { builder.UseInMemoryDatabase(Guid.NewGuid().ToString()); });
 
         configureServices(services);
 
