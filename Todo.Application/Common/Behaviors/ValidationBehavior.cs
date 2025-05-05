@@ -12,28 +12,30 @@ public class ValidationBehavior<TRequest, TResponse>(
     public async ValueTask<TResponse> Handle(
         TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate<TRequest, TResponse> next)
     {
-        if (validators.Any())
+        if (!validators.Any())
         {
-            var context = new ValidationContext<TRequest>(message);
+            return await next(message, cancellationToken);
+        }
 
-            var validationResults = await Task.WhenAll(
-                validators.Select(v => v.ValidateAsync(context, cancellationToken)));
+        var context = new ValidationContext<TRequest>(message);
 
-            var failures = validationResults
-                .Where(r => r.Errors.Any())
-                .SelectMany(r => r.Errors)
-                .ToList();
+        var validationResults = await Task.WhenAll(
+            validators.Select(v => v.ValidateAsync(context, cancellationToken)));
 
-            if (failures.Count > 0)
-            {
-                logger.LogWarning("Request is invalid: {@Request}", message);
+        var failures = validationResults
+            .Where(r => r.Errors.Count != 0)
+            .SelectMany(r => r.Errors)
+            .ToList();
 
-                ResponseBase<TResponse> result = new TResponse()
-                    .Invalid()
-                    .WithErrors(failures.Select(a => new ResponseError(a.PropertyName, a.ErrorMessage)));
+        if (failures.Count > 0)
+        {
+            logger.LogWarning("Request is invalid: {@Request}", message);
 
-                return (TResponse)result;
-            }
+            ResponseBase<TResponse> result = new TResponse()
+                .Invalid()
+                .WithErrors(failures.Select(a => new ResponseError(a.PropertyName, a.ErrorMessage)));
+
+            return (TResponse)result;
         }
 
         return await next(message, cancellationToken);
