@@ -3,7 +3,7 @@ using Todo.Domain.Entities;
 
 namespace Todo.Application.Commands.ActivateToDo;
 
-public class ActivateToDoCommandHandler(
+internal class ActivateToDoCommandHandler(
     IUnitOfWork unitOfWork,
     TimeProvider timeProvider,
     ILogger<ActivateToDoCommandHandler> logger) : IRequestHandler<ActivateToDoCommand, Response>

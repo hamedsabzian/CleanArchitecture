@@ -1,6 +1,6 @@
 ﻿namespace Todo.Domain.Interfaces;
 
-public interface IRepository<T>
+internal interface IRepository<T>
 {
     ValueTask<T?> GetAsync(Guid id, CancellationToken cancellationToken = default);
     void Add(T entity);

@@ -5,7 +5,7 @@ using Todo.Domain.Entities.Common;
 
 namespace Todo.Infrastructure.Data;
 
-public class ToDoDbContext : DbContext
+internal class ToDoDbContext : DbContext
 {
     private readonly IDomainEventDispatcher? _domainEventDispatcher;
 

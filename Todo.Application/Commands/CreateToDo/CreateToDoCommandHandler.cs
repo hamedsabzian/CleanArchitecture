@@ -4,7 +4,7 @@ using Todo.Domain.Entities;
 
 namespace Todo.Application.Commands.CreateToDo;
 
-public class CreateToDoCommandHandler(
+internal class CreateToDoCommandHandler(
     IIdGenerator idGenerator,
     TimeProvider timeProvider,
     IUnitOfWork unitOfWork)

@@ -3,7 +3,7 @@ using Todo.Application.Shared.Interfaces;
 
 namespace Todo.Application.Queries.GetToDoList;
 
-public class GetToDoListQueryHandler(IToDoReader reader) : IRequestHandler<GetToDoListQuery, Response<PaginatedList<GetToDoListDto>>>
+internal class GetToDoListQueryHandler(IToDoReader reader) : IRequestHandler<GetToDoListQuery, Response<PaginatedList<GetToDoListDto>>>
 {
     public async ValueTask<Response<PaginatedList<GetToDoListDto>>> Handle(GetToDoListQuery request, CancellationToken cancellationToken)
     {

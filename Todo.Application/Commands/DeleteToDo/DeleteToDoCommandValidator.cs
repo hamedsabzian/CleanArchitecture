@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Todo.Application.Commands.DeleteToDo;
 
-public class DeleteToDoCommandValidator : AbstractValidator<DeleteToDoCommand>
+internal class DeleteToDoCommandValidator : AbstractValidator<DeleteToDoCommand>
 {
     public DeleteToDoCommandValidator()
     {

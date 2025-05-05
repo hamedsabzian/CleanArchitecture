@@ -3,6 +3,7 @@ using Todo.Api.Configurations;
 using Todo.Application;
 using Todo.Application.Common.ResponseModels;
 using Todo.Infrastructure;
+using Todo.Infrastructure.Data.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-await app.MigrateDatabase();
+await app.Services.MigrateDatabase();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

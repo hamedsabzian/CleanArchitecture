@@ -5,7 +5,7 @@ using Todo.Application.Common;
 
 namespace Todo.Application.Queries.GetToDo;
 
-public class GetToDoQueryHandler(IToDoReader reader, IMemoryCache cache, ILogger<GetToDoQueryHandler> logger)
+internal class GetToDoQueryHandler(IToDoReader reader, IMemoryCache cache, ILogger<GetToDoQueryHandler> logger)
     : IRequestHandler<GetToDoQuery, Response<GetToDoDto>>
 {
     public async ValueTask<Response<GetToDoDto>> Handle(GetToDoQuery request, CancellationToken cancellationToken)

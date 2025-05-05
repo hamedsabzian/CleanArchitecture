@@ -4,7 +4,7 @@ using Todo.Application.Shared.Interfaces;
 
 namespace Todo.Infrastructure.Data.Readers;
 
-public class ToDoReader(ToDoDbContext dbContext) : IToDoReader
+internal class ToDoReader(ToDoDbContext dbContext) : IToDoReader
 {
     public Task<GetToDoDto?> GetAsync(Guid id, CancellationToken cancellationToken)
     {

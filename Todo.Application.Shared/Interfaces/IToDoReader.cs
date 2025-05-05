@@ -2,7 +2,7 @@
 
 namespace Todo.Application.Shared.Interfaces;
 
-public interface IToDoReader
+internal interface IToDoReader
 {
     Task<GetToDoDto?> GetAsync(Guid id, CancellationToken cancellationToken);
 

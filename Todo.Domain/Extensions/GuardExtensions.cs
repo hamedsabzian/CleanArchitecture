@@ -2,7 +2,7 @@
 
 namespace Todo.Domain.Extensions;
 
-public static class GuardExtensions
+internal static class GuardExtensions
 {
     public static void NotEqualTo<T>(this IGuardClause _, T input, T expected, string parameterName)
     {

@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Todo.Application.Commands.CreateToDo;
 
-public class CreateToDoCommandValidator : AbstractValidator<CreateToDoCommand>
+internal class CreateToDoCommandValidator : AbstractValidator<CreateToDoCommand>
 {
     public CreateToDoCommandValidator()
     {

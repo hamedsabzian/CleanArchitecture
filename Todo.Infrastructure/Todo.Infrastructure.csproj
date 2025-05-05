@@ -4,6 +4,7 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyName>Todo.Infrastructure</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,7 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Todo.Application.Shared\Todo.Application.Shared.csproj" />
-      <ProjectReference Include="..\Todo.Domain\Todo.Domain.csproj" />
+      <ProjectReference Include="..\Todo.Domain\Todo.Domain.csproj"  />
     </ItemGroup>
 
 </Project>

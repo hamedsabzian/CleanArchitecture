@@ -6,7 +6,7 @@ using Todo.Domain.Events;
 
 namespace Todo.Application.Events;
 
-public abstract class ToDoUpdatedEventBaseHandler(IMemoryCache cache, IToDoReader reader)
+internal abstract class ToDoUpdatedEventBaseHandler(IMemoryCache cache, IToDoReader reader)
 {
     private const int CacheDurationInMinutes = 10;
 

@@ -4,7 +4,7 @@ using Todo.Domain.Events;
 
 namespace Todo.Application.Events;
 
-public class ToDoUpdatedEventHandler(IMemoryCache cache, IToDoReader reader)
+internal class ToDoUpdatedEventHandler(IMemoryCache cache, IToDoReader reader)
     : ToDoUpdatedEventBaseHandler(cache, reader), INotificationHandler<ToDoUpdatedEvent>
 {
     public ValueTask Handle(ToDoUpdatedEvent notification, CancellationToken cancellationToken)

@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Todo.Application.Queries.GetToDoList;
 
-public class GetToDoListQueryValidator : AbstractValidator<GetToDoListQuery>
+internal class GetToDoListQueryValidator : AbstractValidator<GetToDoListQuery>
 {
     public GetToDoListQueryValidator()
     {

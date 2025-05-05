@@ -3,7 +3,7 @@ using Todo.Domain.Entities;
 
 namespace Todo.Application.Commands.DeleteToDo;
 
-public class DeleteToDoCommandHandler(
+internal class DeleteToDoCommandHandler(
     IUnitOfWork unitOfWork,
     TimeProvider timeProvider,
     ILogger<DeleteToDoCommandHandler> logger) : IRequestHandler<DeleteToDoCommand, Response>

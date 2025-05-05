@@ -2,7 +2,7 @@
 
 namespace Todo.Application.Common;
 
-public static class CacheExtensions
+internal static class CacheExtensions
 {
     private const int CacheExpirationInMinute = 60;
     private static readonly SemaphoreSlim Semaphore = new(1, 1);

@@ -1,9 +1,8 @@
-﻿using Todo.Application.Shared.Interfaces;
-using Todo.Domain.Interfaces;
+﻿using Todo.Domain.Interfaces;
 
 namespace Todo.Infrastructure.Data.Repositories;
 
-public class Repository<T>(ToDoDbContext dbContext) : IRepository<T> where T : class
+internal class Repository<T>(ToDoDbContext dbContext) : IRepository<T> where T : class
 {
     public ValueTask<T?> GetAsync(Guid id, CancellationToken cancellationToken = default)
     {
